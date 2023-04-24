@@ -1,7 +1,8 @@
+'use client';
+import styles from './page.module.css';
 import {useXCheckout} from 'react-korba-payment';
-import './App.css';
 
-function App() {
+export default function CheckoutButton() {
   const {handleXCheckoutClick} = useXCheckout({
     config: {
       merchantID: '<your_merchant_id>',
@@ -14,12 +15,8 @@ function App() {
   });
 
   return (
-    <div className="main">
-      <button onClick={handleXCheckoutClick} className="button">
-        Pay Now!
-      </button>
-    </div>
+    <button onClick={handleXCheckoutClick} className={styles.button}>
+      Pay Now!
+    </button>
   );
 }
-
-export default App;
