@@ -1,4 +1,5 @@
 import {useXCheckout} from 'react-korba-payment';
+import './App.css';
 
 function App() {
   const {handleXCheckoutClick} = useXCheckout({
