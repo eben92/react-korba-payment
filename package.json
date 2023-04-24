@@ -8,7 +8,9 @@
   "jsnext:main": "dist/index.es.js",
   "scripts": {
     "build": "rm -rf dist && rollup -c --bundleConfigAsCjs",
+    "build:win": "del /q /s dist && rollup -c --bundleConfigAsCjs",
     "build:watch": "rm -rf dist && rollup -c --watch --bundleConfigAsCjs",
+    "build:win-watch": "del /q /s dist && rollup -c --watch --bundleConfigAsCjs",
     "format": "prettier --write '**/**/*.{js,}'",
     "lint": "eslint --ext .js,.ts,.tsx,.jsx --ignore-path .eslintignore .",
     "lint:fix": "npm run lint -- --fix",

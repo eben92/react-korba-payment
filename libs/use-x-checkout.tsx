@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import type {TXCheckoutRefProps, ICheckoutHooksProps, TUseXCheckoutProps} from './types';
 
 export default function useXCheckout({config, scriptSrc}: TUseXCheckoutProps): ICheckoutHooksProps {
