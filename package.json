@@ -1,6 +1,6 @@
 {
   "name": "react-korba-payment",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "ReactJS library for korba payment gateway",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
