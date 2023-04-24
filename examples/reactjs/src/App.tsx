@@ -1,5 +1,5 @@
 import React from 'react';
-import {useXCheckout} from 'react-korba-payment/libs';
+import {useXCheckout} from 'react-korba-payment';
 
 function App() {
   const {handleXCheckoutClick} = useXCheckout({
@@ -14,9 +14,9 @@ function App() {
   });
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <button onClick={handleXCheckoutClick} className="bg-blue-500 text-white px-4 py-2">
-        Pay
+    <div className="main">
+      <button onClick={handleXCheckoutClick} className="button">
+        Pay Now!
       </button>
     </div>
   );
