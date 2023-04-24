@@ -1,4 +1,3 @@
-import React from 'react';
 import {useXCheckout} from 'react-korba-payment';
 
 function App() {
