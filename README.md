@@ -74,7 +74,6 @@ Don't forget to [follow me on instagram](https://instagram.com/1rutmann)!
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
-# react-korba-payment
 
 
 
