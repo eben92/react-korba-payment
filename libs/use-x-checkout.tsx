@@ -1,36 +1,8 @@
-import React, {useEffect, useRef} from 'react';
+import {useEffect, useRef} from 'react';
+import type {TXCheckoutRefProps, ICheckoutHooksProps, TUseXCheckoutProps} from './types';
 
-export type ICheckoutConfig = {
-  merchantID: string;
-  orderID: string;
-  description: string;
-  amount: number;
-  redirectURL: string;
-};
-
-export type TXCheckoutRef = {
-  configure: (config: ICheckoutConfig) => void;
-  pay: () => void;
-  destroy: () => void;
-};
-
-interface ICheckoutHooks {
-  handleXCheckoutClick: () => void;
-}
-
-declare global {
-  interface Window {
-    XCheckout: TXCheckoutRef;
-  }
-}
-
-type TUseXCheckoutProps = {
-  config: ICheckoutConfig;
-  scriptSrc: string;
-};
-
-export default function useXCheckout({config, scriptSrc}: TUseXCheckoutProps): ICheckoutHooks {
-  const xcheckoutRef = useRef<TXCheckoutRef | null>(null);
+export default function useXCheckout({config, scriptSrc}: TUseXCheckoutProps): ICheckoutHooksProps {
+  const xcheckoutRef = useRef<TXCheckoutRefProps | null>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
