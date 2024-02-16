@@ -28,28 +28,29 @@ yarn add react-korba-payment
 
 ```javascript
 import React from 'react';
-import {useXCheckout} from 'react-korba-payment';
+import { useXCheckout } from 'react-korba-payment';
 
 function App() {
-  const {handleXCheckoutClick} = useXCheckout({
-    config: {
-      merchantID: '<your_merchant_id>',
-      orderID: '<unique_order_id>',
-      description: 'Ordered goods',
-      amount: 1.2,
-      redirectURL: 'http://www.yourawesomeapp.com',
-    },
-    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js',
+  const {pay} = useXCheckout({
+    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js', // replace with your XCheckout script URL
   });
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <button onClick={handleXCheckoutClick} className="bg-blue-500 text-white px-4 py-2">
+      <button
+        onClick={() => {
+          pay({
+            merchantID: '<your_merchant_id>',
+            orderID: '<unique_order_id>',
+            description: 'Ordered goods',
+            amount: 1.2, // in GH₵
+            redirectURL: 'http://www.yourawesomeapp.com',
+          });
+        }}
+        className="button"
+      >
         Pay Now!
       </button>
-    </div>
   );
-}
 
 export default App;
 ```
@@ -62,28 +63,30 @@ Next.js 13 introduces a new app/ directory folder structure. By default it uses 
 ```javascript
 'use client';
 import React from 'react';
-import {useXCheckout} from 'react-korba-payment';
+import { useXCheckout } from 'react-korba-payment';
 
-function CheckoutButton() {
-  const {handleXCheckoutClick} = useXCheckout({
-    config: {
-      merchantID: '<your_merchant_id>',
-      orderID: '<unique_order_id>',
-      description: 'Ordered goods',
-      amount: 1.2,
-      redirectURL: 'http://www.yourawesomeapp.com',
-    },
-    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js',
+export default function CheckoutButton() {
+  const {pay} = useXCheckout({
+    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js', // replace with your XCheckout script URL
   });
 
   return (
-    <button onClick={handleXCheckoutClick} className="bg-blue-500 text-white px-4 py-2">
+    <button
+      onClick={() => {
+        pay({
+          merchantID: '<your_merchant_id>',
+          orderID: '<unique_order_id>',
+          description: 'Ordered goods',
+          amount: 1.2, // in GH₵
+          redirectURL: 'http://www.yourawesomeapp.com',
+        });
+      }}
+      className={styles.button}
+    >
       Pay Now!
     </button>
   );
 }
-
-export default CheckoutButton;
 ```
 
 Please checkout [Korba Documentation](https://xchange.korba365.com/docs/) for more.
@@ -103,6 +106,7 @@ If you would like to contribute to React Korba Payment(js),
 5. Submit a pull request 😉😉
 
 Don't forget to [follow me on instagram](https://instagram.com/1rutmann)!
+Don't forget to [follow me on twitter](https://x.com/tswwws)!
 
 ## License
 

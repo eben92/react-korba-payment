@@ -17,7 +17,7 @@
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-korba-payment": "^0.0.8",
+    "react-korba-payment": "latest",
     "typescript": "5.0.4"
   }
 }
