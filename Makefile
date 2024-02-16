@@ -1,5 +1,6 @@
-deploy-to-npm:
-	npm publish --access public
+deploy:
+	@npm run build
+	@npm publish --access public
 
 format:
 	npm run format
