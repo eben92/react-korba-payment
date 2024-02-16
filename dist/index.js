@@ -19,57 +19,57 @@ var react = require('react');
  * @see [Package Documentation](https://github.com/eben92/react-korba-payment#readme)
  * @see [Korba Documentation](https://xchange.korba365.com/docs/#xcheckout)
  */
-function useXCheckout({ scriptSrc }) {
-    const xCheckoutRef = react.useRef(null);
-    const [isXCheckoutLoaded, setIsXCheckoutLoaded] = react.useState(false);
-    react.useEffect(() => {
-        const script = document.createElement('script');
-        script.src = scriptSrc;
-        script.async = true;
-        script.onload = () => {
-            xCheckoutRef.current = window.XCheckout;
-        };
-        const handleScriptLoad = () => {
-            xCheckoutRef.current = window.XCheckout;
-            setIsXCheckoutLoaded(true);
-        };
-        script.addEventListener('load', handleScriptLoad);
-        document.head.appendChild(script);
-        return () => {
-            if (xCheckoutRef.current !== null && typeof xCheckoutRef.current.destroy === 'function') {
-                xCheckoutRef.current.destroy();
-                xCheckoutRef.current = null;
-            }
-            document.head.removeChild(script);
-            setIsXCheckoutLoaded(false);
-        };
-    }, []);
-    /**
-     * Executes the XCheckout process with the provided configuration.
-     * If the XCheckout library is not yet loaded, a warning message is logged.
-     * @param config - The configuration object for XCheckout.
-     * @returns void
-     * @example
-     * const config = {
-     *  merchantID: 'merchant-id', // your merchant ID.
-     *  orderID: 'order-id', // unique order ID
-     *  description: 'description', // optional
-     *  amount: 100, // in GH₵
-     *  redirectURL: 'https://example.com/redirect',
-     * };
-     * onXCheckout(config);
-     * @see XCheckoutConfigProps
-     *
-     */
-    const pay = (config) => {
-        if (xCheckoutRef.current !== null) {
-            xCheckoutRef.current.configure(config);
-            xCheckoutRef.current.pay();
-            return;
-        }
-        console.warn('XCheckout library is not yet loaded');
+function useXCheckout({scriptSrc}) {
+  const xCheckoutRef = react.useRef(null);
+  const [isXCheckoutLoaded, setIsXCheckoutLoaded] = react.useState(false);
+  react.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = scriptSrc;
+    script.async = true;
+    script.onload = () => {
+      xCheckoutRef.current = window.XCheckout;
     };
-    return { pay, isXCheckoutLoaded };
+    const handleScriptLoad = () => {
+      xCheckoutRef.current = window.XCheckout;
+      setIsXCheckoutLoaded(true);
+    };
+    script.addEventListener('load', handleScriptLoad);
+    document.head.appendChild(script);
+    return () => {
+      if (xCheckoutRef.current !== null && typeof xCheckoutRef.current.destroy === 'function') {
+        xCheckoutRef.current.destroy();
+        xCheckoutRef.current = null;
+      }
+      document.head.removeChild(script);
+      setIsXCheckoutLoaded(false);
+    };
+  }, []);
+  /**
+   * Executes the XCheckout process with the provided configuration.
+   * If the XCheckout library is not yet loaded, a warning message is logged.
+   * @param config - The configuration object for XCheckout.
+   * @returns void
+   * @example
+   * const config = {
+   *  merchantID: 'merchant-id', // your merchant ID.
+   *  orderID: 'order-id', // unique order ID
+   *  description: 'description', // optional
+   *  amount: 100, // in GH₵
+   *  redirectURL: 'https://example.com/redirect',
+   * };
+   * onXCheckout(config);
+   * @see XCheckoutConfigProps
+   *
+   */
+  const pay = (config) => {
+    if (xCheckoutRef.current !== null) {
+      xCheckoutRef.current.configure(config);
+      xCheckoutRef.current.pay();
+      return;
+    }
+    console.warn('XCheckout library is not yet loaded');
+  };
+  return {pay, isXCheckoutLoaded};
 }
 
 exports.useXCheckout = useXCheckout;
