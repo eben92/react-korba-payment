@@ -69,7 +69,6 @@ export default function useXCheckout({scriptSrc}: UseXCheckoutProps): XCheckoutH
    * };
    * onXCheckout(config);
    * @see XCheckoutConfigProps
-   *
    */
   const pay = (config: XCheckoutConfigProps): void => {
     if (xCheckoutRef.current !== null) {
