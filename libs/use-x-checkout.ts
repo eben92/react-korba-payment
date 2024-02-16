@@ -1,4 +1,10 @@
-import {useRef, useState, useEffect} from 'react';
+import {useEffect, useRef, useState} from 'react';
+import type {
+  XCheckoutRefProps,
+  XCheckoutHooksReturnProps,
+  UseXCheckoutProps,
+  XCheckoutConfigProps,
+} from './types';
 
 /**
  * Custom hook for integrating Korba XCheckout into a React component.
@@ -17,9 +23,10 @@ import {useRef, useState, useEffect} from 'react';
  * @see [Package Documentation](https://github.com/eben92/react-korba-payment#readme)
  * @see [Korba Documentation](https://xchange.korba365.com/docs/#xcheckout)
  */
-function useXCheckout({scriptSrc}) {
-  const xCheckoutRef = useRef(null);
+export default function useXCheckout({scriptSrc}: UseXCheckoutProps): XCheckoutHooksReturnProps {
+  const xCheckoutRef = useRef<XCheckoutRefProps | null>(null);
   const [isXCheckoutLoaded, setIsXCheckoutLoaded] = useState(false);
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = scriptSrc;
@@ -27,21 +34,26 @@ function useXCheckout({scriptSrc}) {
     script.onload = () => {
       xCheckoutRef.current = window.XCheckout;
     };
+
     const handleScriptLoad = () => {
       xCheckoutRef.current = window.XCheckout;
       setIsXCheckoutLoaded(true);
     };
+
     script.addEventListener('load', handleScriptLoad);
     document.head.appendChild(script);
+
     return () => {
       if (xCheckoutRef.current !== null && typeof xCheckoutRef.current.destroy === 'function') {
         xCheckoutRef.current.destroy();
         xCheckoutRef.current = null;
       }
       document.head.removeChild(script);
+
       setIsXCheckoutLoaded(false);
     };
   }, []);
+
   /**
    * Executes the XCheckout process with the provided configuration.
    * If the XCheckout library is not yet loaded, a warning message is logged.
@@ -57,18 +69,17 @@ function useXCheckout({scriptSrc}) {
    * };
    * onXCheckout(config);
    * @see XCheckoutConfigProps
-   *
    */
-  const pay = (config) => {
+  const pay = (config: XCheckoutConfigProps): void => {
     if (xCheckoutRef.current !== null) {
       xCheckoutRef.current.configure(config);
+
       xCheckoutRef.current.pay();
       return;
     }
+
     console.warn('XCheckout library is not yet loaded');
   };
+
   return {pay, isXCheckoutLoaded};
 }
-
-export {useXCheckout};
-//# sourceMappingURL=index.es.js.map
