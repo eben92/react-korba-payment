@@ -1,28 +1,28 @@
-export type ICheckoutConfigProps = {
+export type XCheckoutConfigProps = {
   merchantID: string;
   orderID: string;
-  description: string;
+  description?: string;
   amount: number;
   redirectURL: string;
 };
 
-export type TXCheckoutRefProps = {
-  configure: (config: ICheckoutConfigProps) => void;
+export type XCheckoutRefProps = {
+  configure: (config: XCheckoutConfigProps) => void;
   pay: () => void;
   destroy: () => void;
 };
 
-export interface ICheckoutHooksProps {
-  handleXCheckoutClick: () => void;
+export interface XCheckoutHooksReturnProps {
+  pay: (config: XCheckoutConfigProps) => void;
+  isXCheckoutLoaded: boolean;
 }
 
 declare global {
   interface Window {
-    XCheckout: TXCheckoutRefProps;
+    XCheckout: XCheckoutRefProps;
   }
 }
 
-export type TUseXCheckoutProps = {
-  config: ICheckoutConfigProps;
+export type UseXCheckoutProps = {
   scriptSrc: string;
 };

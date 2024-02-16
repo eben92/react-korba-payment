@@ -1,6 +1,6 @@
 {
   "name": "react-korba-payment",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "ReactJS library for korba payment gateway",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhutmann/react-korba-payment.git"
+    "url": "git+https://github.com/eben92/react-korba-payment.git"
   },
   "keywords": [
     "Javascript",
@@ -28,6 +28,7 @@
     "Open Source",
     "payments",
     "korba",
+    "korba checkout",
     "korba payment",
     "react korba payment",
     "react korba payment npm",
@@ -39,9 +40,9 @@
   "author": "\"eben\",",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rhutmann/react-korba-payment/issues"
+    "url": "https://github.com/eben92/react-korba-payment/issues"
   },
-  "homepage": "https://github.com/rhutmann/react-korba-payment#readme",
+  "homepage": "https://github.com/eben92/react-korba-payment#readme",
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
     "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
