@@ -15,7 +15,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: "pnpm"
 
       - run: pnpm install
       - run: pnpm run format && pnpm run build
