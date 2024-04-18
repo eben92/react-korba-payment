@@ -32,7 +32,8 @@ import { useXCheckout } from 'react-korba-payment';
 
 function App() {
   const {pay} = useXCheckout({
-    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js', // replace with your XCheckout script URL
+    // replace with your Korba XCheckout script URL
+    scriptSrc: 'https://testxchange.korba365.com/api/v1.0/website_checkout/', 
   });
 
   return (
@@ -43,7 +44,7 @@ function App() {
             orderID: '<unique_order_id>',
             description: 'Ordered goods',
             amount: 1.2, // in GH₵
-            redirectURL: 'http://www.yourawesomeapp.com',
+            redirectURL: 'https://www.yourawesomeapp.com',
           });
         }}
         className="button"
@@ -67,7 +68,8 @@ import { useXCheckout } from 'react-korba-payment';
 
 export default function CheckoutButton() {
   const {pay} = useXCheckout({
-    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js', // replace with your XCheckout script URL
+    // replace with your Korba XCheckout script URL
+    scriptSrc: 'https://testxchange.korba365.com/api/v1.0/website_checkout/', 
   });
 
   return (
@@ -78,7 +80,7 @@ export default function CheckoutButton() {
           orderID: '<unique_order_id>',
           description: 'Ordered goods',
           amount: 1.2, // in GH₵
-          redirectURL: 'http://www.yourawesomeapp.com',
+          redirectURL: 'https://www.yourawesomeapp.com',
         });
       }}
       className={styles.button}
