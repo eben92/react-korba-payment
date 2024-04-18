@@ -15,7 +15,7 @@ import type {
  * @example
  * import { useXCheckout } from 'react-korba-payment';
  *
- * const { pay, isXCheckoutLoaded } = useXCheckout({ scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js' }); // replace with your XCheckout script URL
+ * const { pay, isXCheckoutLoaded } = useXCheckout({ scriptSrc: 'https://testxchange.korba365.com/api/v1.0/website_checkout/' }); // replace with your XCheckout script URL
  *
  * @see UseXCheckoutProps
  * @see XCheckoutHooksReturnProps

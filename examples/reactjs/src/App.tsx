@@ -3,7 +3,8 @@ import './App.css';
 
 function App() {
   const {pay} = useXCheckout({
-    scriptSrc: 'https://paywithkorba.s3-eu-west-1.amazonaws.com/test-checkout.js', // replace with your XCheckout script URL
+    // replace with your Korba XCheckout script URL
+    scriptSrc: 'https://testxchange.korba365.com/api/v1.0/website_checkout/', 
   });
 
   return (
